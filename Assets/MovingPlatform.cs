@@ -41,18 +41,23 @@ public class MovingPlatform : MonoBehaviour
 
     // --- Player Parenting Logic ---
 
+
     private void OnCollisionEnter(Collision collision)
     {
+        // Check if the object we hit is the player
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Make the player a child of the platform
             collision.transform.SetParent(transform);
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
+        // Check if the object leaving is the player
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Detach the player
             collision.transform.SetParent(null);
         }
     }
